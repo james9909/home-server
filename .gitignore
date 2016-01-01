@@ -6,3 +6,9 @@
 
 # Compiled things
 *.pyc
+
+# Virtual environment
+env/
+
+# Logs
+logs/
