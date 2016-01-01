@@ -1,0 +1,8 @@
+# Text Backup Files
+*.s[a-w][a-z]
+*~
+\#*\#
+.\#*
+
+# Compiled things
+*.pyc
