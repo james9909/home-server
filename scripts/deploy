@@ -6,6 +6,5 @@ sudo service nginx stop
 
 echo "Starting the server..."
 sudo service nginx start
-source /home/pi/home-server/server/env/bin/activate
 cd /home/pi/home-server/server
 gunicorn -c ../scripts/gunicorn.py.ini app:app --reload

@@ -28,5 +28,8 @@ sudo ln -s /etc/nginx/sites-available/home /etc/nginx/sites-enabled/home
 
 echo "Setting up supervisord..."
 sudo cp scripts/supervisord.conf /etc/supervisor/supervisord.conf
+sudo bash -c "curl https://raw.githubusercontent.com/Supervisor/initscripts/master/ubuntu > /etc/init.d/supervisord"
+sudo chmod +x /etc/init.d/supervisord
+sudo update-rc.d supervisord defaults
 
 echo "Done! Run \"supervisord\" to launch the server as a daemon"
