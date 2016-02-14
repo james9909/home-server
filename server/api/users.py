@@ -1,6 +1,7 @@
 import utils
 
-from decorators import WebException
+from decorators import api_wrapper, WebException
+from models import db, User
 
 from flask import Blueprint, current_app as app, redirect, request, session
 
@@ -32,17 +33,12 @@ def user_add():
     if len(password) < 4:
         raise WebException("Passwords should be at least 4 characters long.")
 
-    user = get_user(email)
+    user = get_user(email).first()
     if user:
         raise WebException("User with that email already exists.")
 
     add_user(email, password, admin)
     return {"success": 1, "message": "Success!"}
-
-@blueprint.route("/logout", methods=["GET"])
-@api_wrapper
-    session.clear()
-    return redirect("/")
 
 def login_user(email, password):
     user = get_user(email).first()
