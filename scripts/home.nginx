@@ -3,7 +3,11 @@ server {
     server_tokens off;
     server_name 24.102.91.82;
 
+    location / {
+        proxy_pass http://localhost:8000;
+    }
+
     location /static {
-        alias /var/www/home/static;
+        alias /home/pi/home-server/server/static;
     }
 }
