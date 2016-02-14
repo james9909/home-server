@@ -52,6 +52,7 @@ def login_user(email, password):
     if utils.check_password(user.password, password):
         session["email"] = email
         session["admin"] = admin == True
+        session["logged_in"] = True
         return True
     return False
 
@@ -70,3 +71,6 @@ def add_user(email, password, admin):
     with app.app_context():
         db.session.add(user)
         db.session.commit()
+
+def is_logged_in():
+    return "logged_in" in session and session["logged_in"]

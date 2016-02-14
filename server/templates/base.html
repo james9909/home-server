@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse navbar-default">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -26,7 +26,20 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">change me</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if logged_in %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/system">System Overview</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li><a href="/login">Log in</a</li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
