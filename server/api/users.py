@@ -34,7 +34,7 @@ def user_add():
         raise WebException("Passwords should be at least 4 characters long.")
 
     user = get_user(email).first()
-    if user:
+    if user is not None:
         raise WebException("User with that email already exists.")
 
     add_user(email, password, admin)

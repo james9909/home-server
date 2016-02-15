@@ -5,6 +5,7 @@ import api
 app = Flask(__name__)
 
 app.register_blueprint(api.users.blueprint, url_prefix="/api/users")
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:i_hate_passwords@localhost/home"
 
 with app.app_context():
     from api.models import db, User
