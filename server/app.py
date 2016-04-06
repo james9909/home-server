@@ -3,6 +3,7 @@ from flask import Flask, redirect, render_template, session
 import api
 
 app = Flask(__name__)
+app.secret_key = open(".secret_key", "rb").read()
 
 app.register_blueprint(api.users.blueprint, url_prefix="/api/users")
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:i_hate_passwords@localhost/home"

@@ -37,4 +37,7 @@ sudo update-rc.d supervisord defaults
 echo "Creating database..."
 mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS home"
 
+echo "Generating secret key..."
+dd if=/dev/urandom of=server/.secret_key bs=128 count=1
+
 echo "Done! Run \"supervisord\" to launch the server as a daemon"
