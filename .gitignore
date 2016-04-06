@@ -12,3 +12,5 @@ env/
 
 # Logs
 logs/
+
+.secret_key
