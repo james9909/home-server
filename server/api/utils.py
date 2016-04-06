@@ -1,7 +1,7 @@
-from werkzeug.security import check_password_hash, generate_password_hash
+from bcrypt import hashpw, gensalt
 
 def hash_password(password):
-    return generate_password_hash(password)
+    return hashpw(password.encode("utf-8"), gensalt(6))
 
-def check_password(hashed_password, try_password):
-    return check_password_hash(hashed_password, try_password)
+def check_password(candidate, hashed):
+    return hashpw(candidate.encode("utf-8"), hashed.encode("utf-8")) == hashed

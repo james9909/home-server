@@ -45,9 +45,9 @@ def login_user(email, password):
     if user is None:
         return False
 
-    if utils.check_password(user.password, password):
+    if utils.check_password(password, user.password):
         session["email"] = email
-        session["admin"] = admin == True
+        session["admin"] = user.admin == True
         session["logged_in"] = True
         return True
     return False
